@@ -4,5 +4,5 @@ SRC     := src
 CXX      = g++
 CXXFLAGS = -Wall -I$(INCLUDE)
 
-DLL: $(SRC)/*.cpp
-	$(CXX) $(CXXFLAGS) -o DLL $(SRC)/*.cpp
+DoublyLinkedList: $(SRC)/*.cpp
+	$(CXX) $(CXXFLAGS) -o DoublyLinkedList $(SRC)/*.cpp

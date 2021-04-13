@@ -6,22 +6,23 @@ class SLL
 {
 public:
 	SLL();
-	SLL(int, SLL*);
+	SLL(int);
 
 	// Operations
 	void add(int);
 	bool search(int);
-	void print();
 	bool del(int); void fillGaps();
 
 	// Getters
-	int getIndex() { return index; }
 	int getData() { return data; }
 
-private:
-	int data, index;
+	// Printing
+	void print();
 
-	bool rootInit; // If first element is set
+private:
+	int data;
 
 	SLL* next = nullptr;
+
+	bool rootInit;
 };

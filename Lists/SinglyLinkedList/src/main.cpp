@@ -1,11 +1,13 @@
 /*
 Singly linked list data structure.
-
 Implemented
 - add
 - search
 - delete
 - print
+
+Author: Anton Koetzler-Faust
+Email: antonkoetzler-faust@hotmail.com
 */
 
 #include "SLL.h"
