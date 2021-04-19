@@ -1,6 +1,10 @@
 #include "Matrix.h"
 
-int main()
+int main ()
 {
-	Matrix myMatrix = new Matrix(5);
+	Matrix myMatrix(4, 5);
+
+	myMatrix.printMatrix();
+
+	return 0;
 }
