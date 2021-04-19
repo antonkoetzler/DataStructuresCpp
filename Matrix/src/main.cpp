@@ -1,10 +1,12 @@
 #include "Matrix.h"
 
-int main ()
+int main()
 {
-	Matrix myMatrix(4, 5);
+	Matrix* myMatrix = new Matrix(2, 3);
 
-	myMatrix.printMatrix();
+	myMatrix->printMatrix();
+	myMatrix->replaceValue(0, 0, 5);
+	myMatrix->printMatrix();
 
-	return 0;
+	delete myMatrix; return 0;
 }

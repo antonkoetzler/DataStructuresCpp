@@ -1,56 +1,45 @@
 #include "Matrix.h"
 
-Matrix::Matrix()
-{
-	x = 0; y = 0;
-	matrix = nullptr;
-}
-
 Matrix::Matrix(int dimension)
 {
-	x = dimension; y = dimension;
-	matrix = nullptr; allocateMatrix();
+	allocateMatrix(dimension, dimension);
 }
 
-Matrix::Matrix(int xDimension, int yDimension)
+Matrix::Matrix(int x, int y) // Dimension args
 {
-	x = xDimension; y = yDimension;
-	matrix = nullptr; allocateMatrix();
+	allocateMatrix(x, y);
 }
 
-Matrix::~Matrix()
+void Matrix::allocateMatrix(int x, int y) // Dimension args
 {
-	for (int i = 0; i < x; i++)
-		delete[] matrix[i];
-	delete[] matrix;
-}
+	std::vector<int> row;
 
-void Matrix::allocateMatrix()
-{
-	matrix = new int*[x];
+	for (int i = 0; i < y; i++)
+		row.push_back(0);
 
 	for (int i = 0; i < x; i++)
-	{
-		matrix[i] = new int[y];
+		matrix.push_back(row);
 
-		for (int o = 0; o < y; o++)
-			matrix[i][o] = 0;
-	}
+	row.clear();
+}
+
+void Matrix::replaceValue(int x, int y, int value)
+{
+	
 }
 
 void Matrix::printMatrix()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < (int)matrix.size(); i++)
 	{
-		for (int o = 0; o < y; o++)
-			std::cout << matrix[i][o] << "  ";
-		std::cout << std::endl << std::endl;
-	}
-}
+		for (int o = 0; o < (int)matrix[i].size(); o++)
+		{
+			std::cout << matrix[i][o];
 
-void Matrix::printDimensions()
-{
-	std::cout << "x Dimension: " << x << std::endl;
-	std::cout << "y Dimension: " << y << std::endl;
-	std::cout << std::endl << std::endl;
+			if (o != (int)matrix[i].size() - 1)
+				std::cout << "   ";
+			else
+				std::cout << std::endl << std::endl;
+		}
+	}
 }

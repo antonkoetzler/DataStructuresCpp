@@ -1,23 +1,22 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 class Matrix
 {
 public:
-	Matrix(); // Empty matrix
-	Matrix(int); // x by x matrix
-	Matrix(int, int); // x by y matrix
-	~Matrix();
+	Matrix() {}
+	Matrix(int); // x by x
+	Matrix(int, int); // x by y
 
 	// Allocation
-	void allocateMatrix();
+	void allocateMatrix(int, int);
+	void replaceValue(int, int, int);
 
-	// Printers
+	// Printer
 	void printMatrix();
-	void printDimensions();
 
 private:
-	int x, y;
-	int **matrix;
+	std::vector<std::vector<int>> matrix;
 };
