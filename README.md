@@ -8,5 +8,5 @@ Various data structures in C++.
 - Binary tree
 - KD-Trees
 
-## Matrices
-- Matrix builder w/ arithmetic
+## Matrix
+- Matrix class
