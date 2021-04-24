@@ -1,15 +1,48 @@
+/*
+A flexible BST data structure. Flexible as in it
+can be intialized however, and it works perfectly.
+
+Operations
+- add
+- remove
+	- removeMin
+- search
+- print
+
+Author: Anton Koetzler-Faust
+Email: antonkoetzler-faust@hotmail.com
+*/
+
 #include "BST.h"
+#include <vector>
+#include <fstream>
+
+BST* extractInformation();
 
 int main()
 {
-	BST* tree = new BST();
-
-	tree->add(5);
-	tree->add(2);
-	tree->add(7);
-	tree->add(4);
+	BST* tree = extractInformation();
 
 	tree->print();
 
 	delete tree; return 0;
+}
+
+BST* extractInformation()
+{
+	BST* tree = new BST();
+	std::ifstream inputStream("./input.txt");
+
+	int data; char comma;
+
+	if (inputStream.is_open())
+	{
+		while (!inputStream.eof())
+		{
+			inputStream >> data >> comma;
+			tree->add(data);
+		}
+	}
+
+	inputStream.close(); return tree;
 }

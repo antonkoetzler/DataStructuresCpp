@@ -1,6 +1,16 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+
+// Can set an integer to nullptr with this
+struct Node
+{
+public:
+	Node(int newData) : data(newData) {}
+
+	int data;
+};
 
 class BST
 {
@@ -10,12 +20,14 @@ public:
 
 	// Operations
 	void add(int);
+  // void print();
 
-	void print();
-		void BFS();
+	// Getters
+	int getLength();
+	std::vector<int> getData();
 
 private:
-	int data;
+	Node* dataInit;
 
 	BST* prev;
 	BST* left;
