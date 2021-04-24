@@ -20,7 +20,7 @@ public:
 
 	// Operations
 	void add(int);
-  // void print();
+    void print();
 
 	// Getters
 	int getLength();

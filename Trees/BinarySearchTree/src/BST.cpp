@@ -45,6 +45,14 @@ void BST::add(int newData)
 	}
 }
 
+void BST::print()
+{
+	std::cout << dataInit->data << ", ";
+
+	if (left) left->print();
+	if (right) right->print();
+}
+
 int BST::getLength()
 {
 	int leftHeight = 0;
