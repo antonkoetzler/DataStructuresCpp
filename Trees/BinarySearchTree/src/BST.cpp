@@ -47,10 +47,91 @@ void BST::add(int newData)
 
 void BST::print()
 {
-	std::cout << dataInit->data << ", ";
+	int length = getLength(); // For spacing
 
-	if (left) left->print();
-	if (right) right->print();
+	// Empty case
+	if (length == 0)
+	{
+		std::cout << "Empty Tree" << std::endl << std::endl;
+		return;
+	}
+	else
+	{
+		std::vector<int> values; getData(values);
+
+		std::vector<std::vector<Node*>> BFS = BFSOrder(values);
+	}
+}
+
+std::vector<std::vector<Node*>> BST::BFSOrder(std::vector<int>& values)
+{
+	// PRODUCT
+	std::vector<std::vector<Node*>> BFS;
+
+	// Variables needed for this operations
+	std::vector<Node*> transfer;
+	Node* parent = nullptr;
+	Node* current = nullptr;
+
+	// ROOT NODE CASE
+
+	// Placing the root node
+	transfer.push_back(new Node(values[0]));
+	BFS.push_back(transfer);
+	transfer.clear();
+
+	// Finding left subtree
+	for (int i = 1; i < (int)values.size(); i++)
+	{
+		if (values[i] < values[0])
+		{
+			transfer.push_back(new Node(values[i]));
+			values.erase(values.begin() + i);
+			break;
+		}
+
+		// No neighbour case
+		if (i == (int)values.size() - 1)
+			transfer.push_back(nullptr);
+	}
+
+	// Finding right subtree
+	for (int i = 1; i < (int)values.size(); i++)
+	{
+		if (values[i] > values[0])
+		{
+			transfer.push_back(new Node(values[i]));
+			values.erase(values.begin() + i);
+			break;
+		}
+
+		// No neighbour case
+		if (i == (int)values.size() - 1)
+			transfer.push_back(nullptr);
+	}
+
+	BFS.push_back(transfer); // Added to our product
+	transfer.clear();
+
+	values.erase(values.begin()); // Deleting the root node
+	//
+
+	// GENERAL NODE CASE
+	for (int i = 0; i < (int)BFS[BFS.size() - 1].size(); i++)
+	{
+		// Current node
+		if (BFS[BFS.size() - 1][i])
+			current = new Node(BFS[BFS.size() - 1][i]->data);
+
+		// FIND PARENT NODE NOW
+
+		std::cout << "current: " << current->data << std::endl;
+
+		delete parent; parent = nullptr;
+	}
+	//
+
+	values.clear(); return BFS;
 }
 
 int BST::getLength()
@@ -74,4 +155,13 @@ int BST::getLength()
     	else
     		return rightHeight + 1;
     }
+}
+
+void BST::getData(std::vector<int>& values)
+{
+	if (dataInit)
+		values.push_back(dataInit->data);
+
+	if (left) left->getData(values);
+	if (right) right->getData(values);
 }

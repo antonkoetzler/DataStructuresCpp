@@ -20,11 +20,12 @@ public:
 
 	// Operations
 	void add(int);
-    void print();
+	void print();
+		std::vector<std::vector<Node*>> BFSOrder(std::vector<int>&);
 
 	// Getters
 	int getLength();
-	std::vector<int> getData();
+	void getData(std::vector<int>&);
 
 private:
 	Node* dataInit;
