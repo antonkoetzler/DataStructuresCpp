@@ -73,7 +73,7 @@ std::vector<std::vector<Node*>> BST::BFSOrder(std::vector<int>& values)
 	Node* parent = nullptr;
 	Node* current = nullptr;
 
-	// ROOT NODE CASE
+	//// ROOT NODE CASE
 
 	// Placing the root node
 	transfer.push_back(new Node(values[0]));
@@ -91,14 +91,14 @@ std::vector<std::vector<Node*>> BST::BFSOrder(std::vector<int>& values)
 		}
 
 		// No neighbour case
-		if (i == (int)values.size() - 1)
+		if (i == (int)values.size() - 1 && values[i] >= values[0])
 			transfer.push_back(nullptr);
 	}
 
 	// Finding right subtree
 	for (int i = 1; i < (int)values.size(); i++)
 	{
-		if (values[i] > values[0])
+		if (values[i] >= values[0])
 		{
 			transfer.push_back(new Node(values[i]));
 			values.erase(values.begin() + i);
@@ -106,7 +106,7 @@ std::vector<std::vector<Node*>> BST::BFSOrder(std::vector<int>& values)
 		}
 
 		// No neighbour case
-		if (i == (int)values.size() - 1)
+		if (i == (int)values.size() - 1 && values[i] < values[0])
 			transfer.push_back(nullptr);
 	}
 
@@ -114,22 +114,36 @@ std::vector<std::vector<Node*>> BST::BFSOrder(std::vector<int>& values)
 	transfer.clear();
 
 	values.erase(values.begin()); // Deleting the root node
-	//
 
-	// GENERAL NODE CASE
+	////
+
+
+
+	//// GENERAL NODE CASE
+
 	for (int i = 0; i < (int)BFS[BFS.size() - 1].size(); i++)
 	{
 		// Current node
 		if (BFS[BFS.size() - 1][i])
 			current = new Node(BFS[BFS.size() - 1][i]->data);
 
-		// FIND PARENT NODE NOW
+		// Finding the parent node
+		float multiplier = i * 0.5f; // 0.5 always divider
+		if (BFS[BFS.size() - 2][multiplier])
+			parent = new Node(BFS[BFS.size() - 2][multiplier]->data);
+
 
 		std::cout << "current: " << current->data << std::endl;
+		std::cout << "parent: " << parent->data << std::endl;
 
+		delete current; current = nullptr;
 		delete parent; parent = nullptr;
 	}
-	//
+
+	BFS.push_back(transfer);
+	transfer.clear();
+
+	////
 
 	values.clear(); return BFS;
 }
