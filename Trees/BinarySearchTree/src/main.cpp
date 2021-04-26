@@ -5,7 +5,6 @@ can be intialized however, and it works perfectly.
 Operations
 - add
 - remove
-	- removeMin
 - search
 - print
 
@@ -24,6 +23,14 @@ int main()
 	BST* tree = extractInformation();
 
 	tree->print();
+
+	if (tree->search(6))
+		std::cout << "6 found" << std::endl << std::endl;
+	else
+		std::cout << "6 not found" << std::endl;
+
+	if (tree->del(8))
+		tree->print();
 
 	delete tree; return 0;
 }

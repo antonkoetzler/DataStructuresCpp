@@ -22,10 +22,14 @@ public:
 	void add(int);
 	void print();
 		std::vector<std::vector<Node*>> BFSOrder(std::vector<int>&);
+	bool search(int);
+	bool del(int);
+		void fillGaps();
 
 	// Getters
 	int getLength();
 	void getData(std::vector<int>&);
+	int getData() { return dataInit->data; }
 
 private:
 	Node* dataInit;
