@@ -6,7 +6,6 @@ Various data structures in C++.
 
 ## Trees
 - Binary tree
-- KD-Trees
 
 ## Matrix
 - Matrix class
