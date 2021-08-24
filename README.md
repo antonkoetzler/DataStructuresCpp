@@ -1,8 +1,12 @@
-Various data structures in C++.
+# DataStructures ~ Various Data Structures in C++
 
 ## Lists
 - Singly linked list
 - Doubly linked list
+- Stack
+- Queue
+- Sets
+- Hash Tables
 
 ## Trees
 - Binary tree
