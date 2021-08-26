@@ -5,7 +5,6 @@ Hopefully all one file data structures you can use in your C++ code. I'll provid
 - Doubly linked list
 - Stack
 - Queue
-- Sets
 - Hash Tables
 - Binary tree
 - Matrix class
