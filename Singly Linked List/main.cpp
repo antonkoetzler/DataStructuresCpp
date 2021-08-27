@@ -45,7 +45,17 @@ int main()
 	std::cout << std::endl << std::endl;
 
 	// size()
-	std::cout << "Finally, what is the size of our list?: " << myList.size() << std::endl;
+	std::cout << "Finally, what is the size of our list?: " << myList.size() << std::endl << std::endl;
+	
+	// Changing data with [] operator
+	myList[0] = 5;
+	std::cout << "Changed a variable with the [] operator" << std::endl;
+	myList.print(); std::cout << std::endl << std::endl;
+	
+	// clear
+	myList.clear();
+	std::cout << "Now, we cleared our list with clear()" << std::endl;
+	myList.print(); std::cout << std::endl;
 		
 	return 0;
 }

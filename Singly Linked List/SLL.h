@@ -16,6 +16,12 @@
 // 		- Prints the list
 // - size()
 // 		- Returns the size of the list
+// - getIndex(index)
+// 		- Returns the value of the index provided
+// - clear()
+// 		- Empties the list
+//		
+// - Acts like an array (i.e foo[i] and all that)
 
 #pragma once
 #include <iostream>
@@ -290,6 +296,57 @@ public:
 			next->search(value);
 		else
 			return false;
+	}
+	void clear()
+	{
+		for (int i = 0; i < (this->size() - 1); i++)
+			this->del();
+		
+		delete data;
+		data = nullptr;
+	}
+		
+	
+	T& operator[](int index)
+	{
+		// Empty list case
+		if (data == nullptr)
+		{
+			std::cout << "Error: Empty list" << std::endl;
+			exit(0);
+		}
+		// index cant be greater than list size or less than 0
+		else if (index > this->size() || index < 0)
+		{
+			std::cout << "Error: index out of range" << std::endl;
+			exit(0);
+		}
+		// Checking if root is the index 
+		else if (index == *data)
+			return *data;
+		else
+			return next->getIndex(index);
+	}
+	T& getIndex(int index)
+	{
+		static int counter = 1;
+
+		if (counter == index)
+		{
+			counter = 1;
+			return *data;
+		}
+		else if (next != nullptr)
+		{
+			counter++;
+			next->getIndex(index);
+		}
+		// Error
+		else
+		{
+			std::cout << "Error" << std::endl;
+			exit(1);
+		}
 	}
 private:
 	T* data;
