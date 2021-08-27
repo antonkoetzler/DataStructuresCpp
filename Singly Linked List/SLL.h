@@ -8,6 +8,8 @@
 // 		- Adds value to index provided
 // - del()
 // 		- Delete the back of the list
+// - del(value)
+// 		- Deletes the value provided
 // - search(value)
 // 		- Returns either true or false if the value is in the list
 // - print()
@@ -150,6 +152,93 @@ public:
 			return false;
 		}
 	}
+	bool del(T value)
+	{
+		static bool rootChecked = false;
+
+		// Empty list case
+		if (data == nullptr)
+			return false;
+		// Root data is value case
+		else if (!rootChecked && value == *data)
+		{
+			rootChecked = false; // Reset static variable
+
+			if (next != nullptr)
+				fillGaps();
+			// Now an empty list
+			else
+			{
+				delete data;
+				data = nullptr;
+			}
+
+			return true;
+		}
+
+		rootChecked = true;
+
+		// Checking next, and following a pattern alike to fillGaps()
+		if (next != nullptr)
+		{
+			// End case
+			if (*next->data == value)
+			{
+				rootChecked = false; // Reset static variable
+
+				// Deletes the element AND cleans up the list
+				// since we're somewhere in the middle of it
+				if (next->next != nullptr)
+					next->fillGaps();
+				// We may just delete this pointer, as next
+				// has no next->next thus we don't lose data
+				else
+				{
+					delete next;
+					next = nullptr;
+				}
+
+				return true;
+			}
+			// Recurse case
+			else if (next->next != nullptr)
+				next->del(value);
+			// Error case
+			else
+			{
+				rootChecked = false;
+				return false;
+			}
+		}
+		// Error case
+		else
+		{
+			rootChecked = false;
+			return false;
+		}
+	}
+	// Deletes element, shifts list leftwards,
+	// then deletes hanging pointer after deletion
+	void fillGaps()
+	{
+		if (next != nullptr)
+		{
+			delete data;
+			data = nullptr;
+			data = new T(*next->data);
+
+			// Recurse case
+			if (next->next != nullptr)
+				next->fillGaps();
+			// End case
+			else
+			{
+				delete next;
+				next = nullptr;
+			}
+		}
+	}
+
 	void print()
 	{
 		// Empty list case
