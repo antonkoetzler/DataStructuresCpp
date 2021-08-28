@@ -65,7 +65,7 @@ public:
 	bool add(T newData, int index)
 	{
 		// Empty list case
-		if (data == nullptr) return false;
+		if (data == nullptr && index != 0) return false;
 
 		static int counter = 0;
 
