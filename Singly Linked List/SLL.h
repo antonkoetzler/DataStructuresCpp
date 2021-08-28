@@ -237,7 +237,7 @@ public:
 		std::string datatype = typeid(*data).name();
 		
 		// For float and double list
-		if (datatype == "f" || datatype == "d")
+		if (datatype == "f" || datatype == "float" || datatype == "d" || datatype == "double")
 			std::cout << std::fixed << std::setprecision(sizeof(*data)) << *data;
 		else
 			std::cout << *data;
