@@ -2,6 +2,7 @@
 // Author: Anton Koetzler-Faust
 //
 // Features
+// - Any datatype may be used, as the class is templated
 // - add(value)
 // 		- Adds the value to the back of the list
 // - add(value, index)
