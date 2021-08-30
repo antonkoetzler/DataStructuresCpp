@@ -84,9 +84,9 @@ public:
 				delete[] data;
 				data = nullptr;
 				data = newData;
-
-				return true;
 			}
+			
+			return true;
 		}
 	}
 	bool isEmpty()
