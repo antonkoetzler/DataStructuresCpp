@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <algorithm>
 using namespace std;
 
 class Hash
@@ -39,11 +40,40 @@ public:
 		return true;
 	}
 
+	bool del(int ageGroup, int index)
+	{
+		// Error handling
+		if (ageGroup < 0 || ageGroup > 5 || index < 0) return false;
+		// Making sure the index isn't incorrect 
+		else if (index > (table[ageGroup].size() - 1)) return false;
+
+		table[ageGroup].erase(table[ageGroup].begin() + index);
+
+		return true;
+	}
+
 	void print()
 	{
 		for (int i = 0; i < table.size(); i++)
 		{
-			cout << "i: " << i << endl;
+			switch (i)
+			{
+				case 0:
+					cout << "0 - 17 ~ Gen Z: ";
+					break;
+				case 1:
+					cout << "18 - 34 ~ Millennial: ";
+					break;
+				case 2:
+					cout << "35 - 50 ~ Gen X: ";
+					break;
+				case 3:
+					cout << "51 - 69 ~ Boomer: ";
+					break;
+				case 4:
+					cout << "70 Onwards ~ Silent: ";
+					break;
+			}
 
 			for (int o = 0; o < table[i].size(); o++)
 			{
@@ -52,7 +82,7 @@ public:
 				if (o != (table[i].size() - 1))
 					cout << ", ";
 				else
-					cout << endl;
+					cout << endl << endl;
 			}
 		}
 	}
