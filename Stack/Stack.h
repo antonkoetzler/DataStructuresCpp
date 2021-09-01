@@ -1,3 +1,18 @@
+// Program: Stack Data Structure
+// Author: Anton Koetzler-Faust
+//
+// Features
+// - push(T)
+// 		- Adds one element to the back of the stack
+// - pop()
+// 		- Removes the last element in the stack
+// - isEmpty()
+// 		- Checks if the stack is empty
+// - getSize()
+// 		- Returns the size of the stack
+// - print()
+// 		- Prints the stack
+
 #pragma once
 #include <iostream>
 #include <typeinfo>

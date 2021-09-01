@@ -1,3 +1,18 @@
+// Program: Queue Data Structure
+// Author: Anton Koetzler-Faust
+//
+// Features
+// - push(T)
+// 		- Adds an object to the back of the queue
+// - pop()
+// 		- Removes the back element of the queue
+// - isEmpty()
+// 		- Checks if the queue is empty
+// - getSize()
+// 		- Gets the size of the queue
+// - print()
+// 		- Prints the queue
+
 #pragma once
 #include <iostream>
 #include <typeinfo>
